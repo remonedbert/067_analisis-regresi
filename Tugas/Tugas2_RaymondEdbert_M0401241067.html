@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Raymond Edbert">
+
+<title>Tugas 2 Anreg</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="Tugas2_RaymondEdbert_M0401241067_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Tugas2_RaymondEdbert_M0401241067_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="Tugas2_RaymondEdbert_M0401241067_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="Tugas2_RaymondEdbert_M0401241067_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="Tugas2_RaymondEdbert_M0401241067_files/libs/quarto-html/popper.min.js"></script>
+<script src="Tugas2_RaymondEdbert_M0401241067_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Tugas2_RaymondEdbert_M0401241067_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Tugas2_RaymondEdbert_M0401241067_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Tugas2_RaymondEdbert_M0401241067_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Tugas2_RaymondEdbert_M0401241067_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Tugas2_RaymondEdbert_M0401241067_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Tugas2_RaymondEdbert_M0401241067_files/libs/bootstrap/bootstrap-9e3ffae467580fdb927a41352e75a2e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="fullcontent quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Tugas 2 Anreg</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Raymond Edbert </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="deskripsi-data" class="level1">
+<h1>1.Deskripsi Data</h1>
+<section id="a.-read-data" class="level2">
+<h2 class="anchored" data-anchor-id="a.-read-data">A. Read Data</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'readxl' was built under R version 4.5.2</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data_susenas <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">bagan</span><span class="sc">\\</span><span class="st">Downloads</span><span class="sc">\\</span><span class="st">Susenas Anreg.xlsx"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(data_susenas) <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"pengeluaran_makanan"</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"pengeluaran_total"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"kalori"</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"protein"</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"lemak"</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"karbohidrat"</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>data_susenas</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 199 × 6
+   pengeluaran_makanan pengeluaran_total kalori protein lemak karbohidrat
+                 &lt;dbl&gt;             &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;       &lt;dbl&gt;
+ 1            1108714.           816940.  2612.    69.1  30.1        472.
+ 2            7770000           1726190.  3656.   142.  119.         455.
+ 3            2279700            935348.  2009.    46.3  39.6        256.
+ 4            1731429.          1411923.  2290.    85.2  63.1        354.
+ 5            3316714.          1361226.  2152.    65.1  53.0        272.
+ 6            3710571.          6872385.  1566.    47.1  33.1        178.
+ 7            2097857.           692871.  1593.    45.3  38.6        213.
+ 8            3379071.          1889385.  1817.    54.1  45.1        277.
+ 9            6348000.          6567042.  4388.   105.  206.         446.
+10            1389943.          1136096.  1985.    50.1  44.3        316.
+# ℹ 189 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="b.-sumber-data" class="level2">
+<h2 class="anchored" data-anchor-id="b.-sumber-data">B. Sumber Data</h2>
+<p>Data di dapatkan dari susenas tahun 2023</p>
+</section>
+<section id="c.-deskripsi-variabel" class="level2">
+<h2 class="anchored" data-anchor-id="c.-deskripsi-variabel">C. Deskripsi Variabel</h2>
+<p>Dataset ini terdiri dari 6 variabel utama:</p>
+<p>(Y): Rata-rata Pengeluaran Perkapita Sebulan.</p>
+<p>(X1): Rata Rata Pengeluaran makanan sebulan .</p>
+<p>(X2): Banyaknya Konsumsi Kalori Perkapita Sehari.</p>
+<p>(X3): Banyaknya Konsumsi Protein Perkapita Sehari.</p>
+<p>(X4): Banyaknya Konsumsi Lemak Perkapita Sehari.</p>
+<p>(X5): Banyaknya Konsumsi Karbohidrat Perkapita Sehari.</p>
+</section>
+<section id="d.-statistik-deskriptif" class="level2">
+<h2 class="anchored" data-anchor-id="d.-statistik-deskriptif">D. Statistik Deskriptif</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data_susenas)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> pengeluaran_makanan pengeluaran_total      kalori        protein      
+ Min.   :  519429    Min.   :  306748   Min.   :1060   Min.   : 19.09  
+ 1st Qu.: 1701643    1st Qu.:  879871   1st Qu.:1676   1st Qu.: 48.24  
+ Median : 2750571    Median : 1416407   Median :2100   Median : 60.02  
+ Mean   : 3199437    Mean   : 2159162   Mean   :2165   Mean   : 64.23  
+ 3rd Qu.: 4039264    3rd Qu.: 2424722   3rd Qu.:2457   3rd Qu.: 76.14  
+ Max.   :22899857    Max.   :17944762   Max.   :4388   Max.   :141.50  
+     lemak          karbohidrat   
+ Min.   :  9.931   Min.   :141.3  
+ 1st Qu.: 37.800   1st Qu.:234.2  
+ Median : 52.277   Median :288.3  
+ Mean   : 54.816   Mean   :300.9  
+ 3rd Qu.: 64.108   3rd Qu.:347.5  
+ Max.   :206.392   Max.   :665.6  </code></pre>
+</div>
+</div>
+<section id="standar-deviasi" class="level3">
+<h3 class="anchored" data-anchor-id="standar-deviasi">Standar Deviasi</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>std_devs <span class="ot">&lt;-</span> <span class="fu">sapply</span>(data_susenas, sd, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>hasil_sd <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Variabel =</span> <span class="fu">names</span>(std_devs),</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Standar_Deviasi =</span> std_devs</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(hasil_sd)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                               Variabel Standar_Deviasi
+pengeluaran_makanan pengeluaran_makanan    2.476714e+06
+pengeluaran_total     pengeluaran_total    2.312030e+06
+kalori                           kalori    6.383548e+02
+protein                         protein    2.126377e+01
+lemak                             lemak    2.388372e+01
+karbohidrat                 karbohidrat    8.910813e+01</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="visualisasi-data" class="level2">
+<h2 class="anchored" data-anchor-id="visualisasi-data">Visualisasi Data</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'ggplot2' was built under R version 4.5.2</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'gridExtra' was built under R version 4.5.3</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'scales' was built under R version 4.5.2</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data_susenas, <span class="fu">aes</span>(<span class="at">x =</span> pengeluaran_total)) <span class="sc">+</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">"darkblue"</span>, <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">bins =</span> <span class="dv">30</span>) <span class="sc">+</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>(<span class="at">labels =</span> comma) <span class="sc">+</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribusi Pengeluaran Perkapita"</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Pengeluaran (Rp)"</span>,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Frekuensi"</span>)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data_susenas, <span class="fu">aes</span>(<span class="at">y =</span> kalori)) <span class="sc">+</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">"orange"</span>) <span class="sc">+</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Boxplot Konsumsi Kalori"</span>,</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Kalori per Hari"</span>)</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data_susenas, <span class="fu">aes</span>(<span class="at">x =</span> protein, <span class="at">y =</span> pengeluaran_total)) <span class="sc">+</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.4</span>, <span class="at">color =</span> <span class="st">"darkgreen"</span>) <span class="sc">+</span></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>(<span class="at">labels =</span> comma) <span class="sc">+</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Protein vs Pengeluaran"</span>,</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Protein"</span>,</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Pengeluaran (Rp)"</span>)</span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>data_susenas<span class="sc">$</span>kategori_kalori <span class="ot">&lt;-</span> <span class="fu">cut</span>(data_susenas<span class="sc">$</span>kalori,</span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">breaks =</span> <span class="dv">5</span>)</span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data_susenas, <span class="fu">aes</span>(<span class="at">x =</span> kategori_kalori)) <span class="sc">+</span></span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"darkred"</span>) <span class="sc">+</span></span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribusi Kategori Kalori"</span>,</span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Kategori Kalori"</span>,</span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Jumlah"</span>)</span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(p1, p2, p3, p4, <span class="at">ncol =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Tugas2_RaymondEdbert_M0401241067_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="eksplorasi-data" class="level1">
+<h1>2. Eksplorasi Data</h1>
+<section id="a.-hubungan-antara-variabel-harga-rumah-dan-masing-masing-variabel-prediktor" class="level2">
+<h2 class="anchored" data-anchor-id="a.-hubungan-antara-variabel-harga-rumah-dan-masing-masing-variabel-prediktor">a. hubungan antara variabel Harga Rumah dan masing masing variabel prediktor</h2>
+<section id="pengeluaran-makanan" class="level3">
+<h3 class="anchored" data-anchor-id="pengeluaran-makanan">Pengeluaran Makanan</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data_susenas, <span class="fu">aes</span>(<span class="at">x =</span> pengeluaran_makanan, <span class="at">y =</span> pengeluaran_total)) <span class="sc">+</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>(<span class="at">labels =</span> comma) <span class="sc">+</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Pengeluaran Makanan vs Pengeluaran Total"</span>,</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Pengeluaran Makanan"</span>,</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Pengeluaran Total"</span>)</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(p1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Tugas2_RaymondEdbert_M0401241067_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Dari grafik ini terlihat ada kecenderungan hubungan positif antara pengeluaran makanan dan pengeluaran total. Saat pengeluaran makanan meningkat, pengeluaran total juga cenderung ikut naik. Titik data cukup mengikuti arah garis, walaupun pada nilai yang lebih tinggi mulai terlihat penyebaran yang lebih lebar. Ini menunjukkan adanya variasi yang lebih besar pada pengeluaran tinggi, serta beberapa titik yang agak menyimpang.</p>
+</section>
+<section id="kalori" class="level3">
+<h3 class="anchored" data-anchor-id="kalori">Kalori</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data_susenas, <span class="fu">aes</span>(<span class="at">x =</span> kalori, <span class="at">y =</span> pengeluaran_total)) <span class="sc">+</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">color =</span> <span class="st">"darkgreen"</span>) <span class="sc">+</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>(<span class="at">labels =</span> comma) <span class="sc">+</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Kalori vs Pengeluaran Total"</span>,</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Kalori"</span>,</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Pengeluaran Total"</span>)</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(p2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Tugas2_RaymondEdbert_M0401241067_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Hubungan antara kalori dan pengeluaran total terlihat positif, tetapi tidak terlalu kuat. Titik data cukup menyebar dan tidak terlalu rapat mengikuti garis. Artinya, konsumsi kalori ada kaitannya dengan pengeluaran, tetapi pengaruhnya tidak terlalu besar dibanding variabel lain.</p>
+</section>
+<section id="protein" class="level3">
+<h3 class="anchored" data-anchor-id="protein">Protein</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data_susenas, <span class="fu">aes</span>(<span class="at">x =</span> protein, <span class="at">y =</span> pengeluaran_total)) <span class="sc">+</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">color =</span> <span class="st">"purple"</span>) <span class="sc">+</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>(<span class="at">labels =</span> comma) <span class="sc">+</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Protein vs Pengeluaran Total"</span>,</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Protein"</span>,</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Pengeluaran Total"</span>)</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(p3)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Tugas2_RaymondEdbert_M0401241067_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Pada grafik ini terlihat adanya hubungan positif yang cukup konsisten. Titik data cenderung mengikuti arah garis naik, meskipun masih terdapat penyebaran. Ini menunjukkan bahwa peningkatan konsumsi protein cenderung diikuti dengan peningkatan pengeluaran total, walaupun tidak sepenuhnya linear.</p>
+</section>
+<section id="lemak" class="level3">
+<h3 class="anchored" data-anchor-id="lemak">Lemak</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data_susenas, <span class="fu">aes</span>(<span class="at">x =</span> lemak, <span class="at">y =</span> pengeluaran_total)) <span class="sc">+</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">color =</span> <span class="st">"orange"</span>) <span class="sc">+</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>(<span class="at">labels =</span> comma) <span class="sc">+</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Lemak vs Pengeluaran Total"</span>,</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Lemak"</span>,</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Pengeluaran Total"</span>)</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(p4)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Tugas2_RaymondEdbert_M0401241067_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Hubungan antara lemak dan pengeluaran total juga terlihat positif. Polanya mirip dengan protein, di mana titik data mengikuti tren naik, tetapi dengan variasi yang cukup besar, terutama pada nilai yang lebih tinggi.</p>
+</section>
+<section id="karbohidrat" class="level3">
+<h3 class="anchored" data-anchor-id="karbohidrat">Karbohidrat</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>p5 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data_susenas, <span class="fu">aes</span>(<span class="at">x =</span> karbohidrat, <span class="at">y =</span> pengeluaran_total)) <span class="sc">+</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">color =</span> <span class="st">"brown"</span>) <span class="sc">+</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>(<span class="at">labels =</span> comma) <span class="sc">+</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Karbohidrat vs Pengeluaran Total"</span>,</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Karbohidrat"</span>,</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Pengeluaran Total"</span>)</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(p5)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Tugas2_RaymondEdbert_M0401241067_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Untuk karbohidrat, hubungan yang terlihat cenderung lebih lemah. Titik data cukup menyebar dan tidak terlalu mengikuti garis tren. Meskipun arah hubungan masih positif, pengaruhnya terhadap pengeluaran total tidak terlalu kuat.</p>
+</section>
+</section>
+<section id="b.-matriks-korelasi-antar-variabel" class="level2">
+<h2 class="anchored" data-anchor-id="b.-matriks-korelasi-antar-variabel">b. Matriks Korelasi Antar Variabel</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrplot)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'corrplot' was built under R version 4.5.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>corrplot 0.95 loaded</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>data_num <span class="ot">&lt;-</span> data_susenas[, <span class="fu">c</span>(<span class="st">"pengeluaran_makanan"</span>,</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"pengeluaran_total"</span>,</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"kalori"</span>,</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"protein"</span>,</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"lemak"</span>,</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"karbohidrat"</span>)]</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>cor_matrix <span class="ot">&lt;-</span> <span class="fu">cor</span>(data_num, <span class="at">use =</span> <span class="st">"pairwise.complete.obs"</span>)</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(cor_matrix, <span class="at">method =</span> <span class="st">"color"</span>, <span class="at">addCoef.col =</span> <span class="st">"black"</span>, </span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">type =</span> <span class="st">"upper"</span>, <span class="at">tl.col =</span> <span class="st">"black"</span>, <span class="at">tl.srt =</span> <span class="dv">45</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Tugas2_RaymondEdbert_M0401241067_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="c.-interpretasi-awal" class="level2">
+<h2 class="anchored" data-anchor-id="c.-interpretasi-awal">c.&nbsp;Interpretasi Awal</h2>
+<p>Hasil eksplorasi menunjukkan kalau pengeluaran makanan punya hubungan positif yang cukup kuat dengan pengeluaran total, jadi kalau pengeluaran makanan naik, totalnya juga ikut naik. Sementara itu, variabel gizi seperti kalori, protein, lemak, dan karbohidrat juga cenderung berhubungan positif, tapi nggak sekuat pengeluaran makanan dan datanya lebih menyebar.</p>
+<p>Selain itu, variabel gizi terlihat saling berkaitan satu sama lain, yang ngasih indikasi adanya multikolinearitas. Secara umum, pola hubungan antar variabel nggak sepenuhnya linear dan ada beberapa titik yang agak menyimpang.</p>
+</section>
+</section>
+<section id="permodelan-regresi" class="level1">
+<h1>3. Permodelan Regresi</h1>
+<section id="a.model-linear-berganda" class="level2">
+<h2 class="anchored" data-anchor-id="a.model-linear-berganda">a.Model Linear Berganda</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(pengeluaran_total <span class="sc">~</span> pengeluaran_makanan <span class="sc">+</span> kalori <span class="sc">+</span> protein <span class="sc">+</span> lemak <span class="sc">+</span> karbohidrat,</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">data =</span> data_susenas)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = pengeluaran_total ~ pengeluaran_makanan + kalori + 
+    protein + lemak + karbohidrat, data = data_susenas)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-5320724  -794147  -354035   446183 12070807 
+
+Coefficients:
+                      Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)         -1.090e+06  4.530e+05  -2.406   0.0171 *  
+pengeluaran_makanan  3.829e-01  5.836e-02   6.562 4.78e-10 ***
+kalori               8.708e+02  7.262e+02   1.199   0.2319    
+protein              5.260e+04  1.258e+04   4.180 4.42e-05 ***
+lemak               -1.551e+04  9.377e+03  -1.655   0.0996 .  
+karbohidrat         -7.939e+03  3.636e+03  -2.183   0.0302 *  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1760000 on 193 degrees of freedom
+Multiple R-squared:  0.4349,    Adjusted R-squared:  0.4202 
+F-statistic:  29.7 on 5 and 193 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+</section>
+<section id="b.-persamaan-model-regresi" class="level2">
+<h2 class="anchored" data-anchor-id="b.-persamaan-model-regresi">b. Persamaan model regresi</h2>
+<p>Pengeluaran_Total = −1.090.000 + 0,3829(X1) + 870,8(X2) + 52.600(X3) − 15.510(X4) − 7.939(X5)</p>
+<p>Keterangan:</p>
+<p>pengeluaran_total (Y): Total pengeluaran rumah tangga per bulan (dalam Rupiah). pengeluaran_makanan (X1): Pengeluaran makanan rumah tangga per bulan (dalam Rupiah). kalori (X2): Jumlah konsumsi kalori. protein (X3): Jumlah konsumsi protein. lemak (X4): Jumlah konsumsi lemak. karbohidrat (X5): Jumlah konsumsi karbohidrat.</p>
+</section>
+<section id="c.-interpretasi-koefisien-regresi" class="level2">
+<h2 class="anchored" data-anchor-id="c.-interpretasi-koefisien-regresi">c.&nbsp;Interpretasi Koefisien Regresi</h2>
+<p>Interpretasi koefisien regresi menunjukkan bahwa setiap kenaikan satu satuan pengeluaran makanan diprediksi akan meningkatkan pengeluaran total sebesar 0,3829, yang menunjukkan bahwa variabel ini menjadi faktor yang cukup dominan dalam model. Sejalan dengan itu, peningkatan konsumsi protein juga memberikan kontribusi positif yang cukup besar terhadap pengeluaran total, sedangkan kalori hanya memberikan pengaruh positif yang relatif kecil.</p>
+<p>Sebaliknya, variabel lemak dan karbohidrat menunjukkan koefisien negatif, di mana peningkatan konsumsi keduanya justru diikuti penurunan pengeluaran total. Namun, arah negatif ini tidak serta-merta mencerminkan hubungan yang sebenarnya, melainkan lebih mengindikasikan adanya multikolinearitas antar variabel gizi yang saling berkaitan. Terakhir, nilai intersep yang negatif berfungsi sebagai konstanta dalam model dan umumnya tidak diinterpretasikan secara praktis.</p>
+</section>
+<section id="d.-interpretasi" class="level2">
+<h2 class="anchored" data-anchor-id="d.-interpretasi">d.&nbsp;Interpretasi</h2>
+<p>Berdasarkan hasil analisis regresi, pengeluaran makanan dan protein memiliki hubungan signifikan dengan pengeluaran total, sedangkan kalori dan lemak tidak signifikan, dan karbohidrat relatif lemah meskipun signifikan. Dari arah hubungan, pengeluaran makanan dan protein berhubungan positif, sementara lemak dan karbohidrat menunjukkan arah negatif yang kemungkinan dipengaruhi oleh keterkaitan antar variabel gizi.</p>
+<p>Secara keseluruhan, model ini lebih menggambarkan hubungan atau pola konsumsi rumah tangga, sehingga interpretasinya bersifat asosiasi dan perlu dilihat dengan hati-hati.</p>
+</section>
+</section>
+<section id="pengujian-hipotesis-parameter" class="level1">
+<h1>4. Pengujian Hipotesis Parameter</h1>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = pengeluaran_total ~ pengeluaran_makanan + kalori + 
+    protein + lemak + karbohidrat, data = data_susenas)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-5320724  -794147  -354035   446183 12070807 
+
+Coefficients:
+                      Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)         -1.090e+06  4.530e+05  -2.406   0.0171 *  
+pengeluaran_makanan  3.829e-01  5.836e-02   6.562 4.78e-10 ***
+kalori               8.708e+02  7.262e+02   1.199   0.2319    
+protein              5.260e+04  1.258e+04   4.180 4.42e-05 ***
+lemak               -1.551e+04  9.377e+03  -1.655   0.0996 .  
+karbohidrat         -7.939e+03  3.636e+03  -2.183   0.0302 *  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1760000 on 193 degrees of freedom
+Multiple R-squared:  0.4349,    Adjusted R-squared:  0.4202 
+F-statistic:  29.7 on 5 and 193 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<section id="a.-hipotesis" class="level2">
+<h2 class="anchored" data-anchor-id="a.-hipotesis">a. Hipotesis</h2>
+<p>Hipotesis Uji Parsial (Uji-t)Untuk setiap koefisien βj(dimana j=1,2,…,k) <span class="math display">\[H_0: \beta_j = 0\]</span> <span class="math display">\[H_1: \beta_j \neq 0\]</span> Keterangan: H0(Hipotesis Nol): variabel independen ke-j secara parsial tidak memiliki hubungan yang signifikan terhadap pengeluaran total rumah tangga. H1(Hipotesis Alternatif): variabel independen ke-j secara parsial memiliki hubungan yang signifikan terhadap pengeluaran total rumah tangga.</p>
+</section>
+<section id="b.-interpretasi" class="level2">
+<h2 class="anchored" data-anchor-id="b.-interpretasi">b. Interpretasi</h2>
+<p>Berdasarkan output regresi tersebut, variabel pengeluaran makanan dan protein memiliki hubungan yang signifikan dengan pengeluaran total (p-value &lt; 0,05). Sebaliknya, variabel kalori dan lemak tidak signifikan secara statistik, sedangkan karbohidrat signifikan namun dengan pengaruh yang relatif kecil. Dari arah hubungannya, pengeluaran makanan dan protein menunjukkan hubungan positif, sementara lemak dan karbohidrat menunjukkan arah negatif dalam model ini.</p>
+<p>Secara keseluruhan, model ini cukup mampu menggambarkan variasi pengeluaran total, dan hasil uji F dengan p-value yang sangat kecil menunjukkan bahwa variabel-variabel independen secara bersama-sama memiliki hubungan yang signifikan dengan pengeluaran total. Namun, hasil ini lebih mencerminkan hubungan atau pola konsumsi rumah tangga, sehingga tidak diinterpretasikan sebagai hubungan sebab-akibat secara langsung. # 5. Diagnostik Model</p>
+</section>
+<section id="a.-asumsi-normalitas-residual" class="level2">
+<h2 class="anchored" data-anchor-id="a.-asumsi-normalitas-residual">a. Asumsi Normalitas Residual</h2>
+<section id="qqplot" class="level3">
+<h3 class="anchored" data-anchor-id="qqplot">QQplot</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(<span class="fu">residuals</span>(model))</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(<span class="fu">residuals</span>(model), <span class="at">col=</span><span class="st">"red"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Tugas2_RaymondEdbert_M0401241067_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="uji-shapiro-wilk" class="level3">
+<h3 class="anchored" data-anchor-id="uji-shapiro-wilk">Uji Shapiro-wilk</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(<span class="fu">residuals</span>(model))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  residuals(model)
+W = 0.74478, p-value &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>Berdasarkan hasil uji normalitas Shapiro-Wilk, diperoleh nilai p-value &lt; 0,05, sehingga H0 ditolak. Hal ini menunjukkan bahwa residual pada model tidak berdistribusi normal. Dengan demikian, asumsi normalitas dalam model regresi tidak terpenuhi, sehingga hasil estimasi perlu ditafsirkan dengan lebih hati-hati.</p>
+</section>
+</section>
+<section id="b.-asumsi-homoskedastisitas" class="level2">
+<h2 class="anchored" data-anchor-id="b.-asumsi-homoskedastisitas">b. Asumsi Homoskedastisitas</h2>
+<section id="plot-residual-vs-fitted" class="level3">
+<h3 class="anchored" data-anchor-id="plot-residual-vs-fitted">plot residual vs fitted</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">fitted</span>(model), <span class="fu">residuals</span>(model),</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">"Fitted Value"</span>, <span class="at">ylab=</span><span class="st">"Residual"</span>,</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Residual vs Fitted"</span>)</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>, <span class="at">col=</span><span class="st">"red"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Tugas2_RaymondEdbert_M0401241067_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="uji-breusch-pagan" class="level3">
+<h3 class="anchored" data-anchor-id="uji-breusch-pagan">Uji Breusch-Pagan</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'lmtest' was built under R version 4.5.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: zoo</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'zoo' was built under R version 4.5.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'zoo'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    as.Date, as.Date.numeric</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bptest</span>(model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    studentized Breusch-Pagan test
+
+data:  model
+BP = 21.746, df = 5, p-value = 0.0005851</code></pre>
+</div>
+</div>
+<p>Berdasarkan hasil uji Breusch-Pagan, diperoleh nilai p-value &lt; 0,05, sehingga H0 ditolak. Hal ini menunjukkan bahwa terdapat gejala heteroskedastisitas pada model, sehingga asumsi homoskedastisitas tidak terpenuhi. Dengan demikian, varians residual tidak konstan dan hasil estimasi perlu diinterpretasikan dengan hati-hati.</p>
+</section>
+</section>
+<section id="c.-asumsi-independensi-residual-autokorelasi" class="level2">
+<h2 class="anchored" data-anchor-id="c.-asumsi-independensi-residual-autokorelasi">c.&nbsp;Asumsi Independensi Residual (Autokorelasi)</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dwtest</span>(model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Durbin-Watson test
+
+data:  model
+DW = 1.9473, p-value = 0.3507
+alternative hypothesis: true autocorrelation is greater than 0</code></pre>
+</div>
+</div>
+<p>Berdasarkan hasil uji Durbin-Watson, diperoleh nilai p-value &gt; 0,05, sehingga H0 gagal ditolak. Hal ini menunjukkan bahwa tidak terdapat autokorelasi pada residual model. Dengan demikian, asumsi independensi residual telah terpenuhi.</p>
+</section>
+<section id="d.-multikolinieritas" class="level2">
+<h2 class="anchored" data-anchor-id="d.-multikolinieritas">d.&nbsp;Multikolinieritas</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'car' was built under R version 4.5.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: carData</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'carData' was built under R version 4.5.2</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vif</span>(model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>pengeluaran_makanan              kalori             protein               lemak 
+           1.334844           13.729818            4.574413            3.204243 
+        karbohidrat 
+           6.707504 </code></pre>
+</div>
+</div>
+<p>Berdasarkan nilai VIF (Variance Inflation Factor), terlihat bahwa sebagian besar variabel memiliki nilai di bawah 10, seperti pengeluaran_makanan, protein, dan lemak, sehingga tidak menunjukkan adanya masalah multikolinearitas yang serius. Namun, variabel kalori (13,73) memiliki nilai VIF di atas 10, yang mengindikasikan adanya multikolinearitas tinggi pada variabel tersebut. Sementara itu, karbohidrat (6,71) berada pada tingkat sedang dan masih perlu diperhatikan.</p>
+<p>Secara keseluruhan, terdapat indikasi multikolinearitas dalam model, terutama pada variabel kalori, sehingga hasil estimasi koefisien dapat menjadi kurang stabil dan perlu diinterpretasikan dengan hati-hati.</p>
+</section>
+<section id="e.-outlier-leverage-dan-amatan-berpengaruh" class="level2">
+<h2 class="anchored" data-anchor-id="e.-outlier-leverage-dan-amatan-berpengaruh">e. Outlier, Leverage, dan Amatan Berpengaruh</h2>
+<section id="outlier" class="level3">
+<h3 class="anchored" data-anchor-id="outlier">Outlier</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rstudent</span>(model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          1           2           3           4           5           6 
+-0.12366975 -3.25208902 -0.22070386 -0.49082315 -0.64550785  2.70444582 
+          7           8           9          10          11          12 
+-0.28402131  0.08969864  1.74673092  0.30261721  0.03233266 -0.59374719 
+         13          14          15          16          17          18 
+-0.93271890 -0.08135426 -0.44497445 -0.55848202  0.71616955 -0.17234343 
+         19          20          21          22          23          24 
+ 0.10470121 -0.31397846  1.24144777  0.20673483  0.35368533  0.01585613 
+         25          26          27          28          29          30 
+-0.47616801 -0.55783902 -0.75313442  0.08760256  0.33378117  0.50992734 
+         31          32          33          34          35          36 
+-0.39200905  0.14484023 -0.73910530 -0.29934943  0.17535390 -0.14816436 
+         37          38          39          40          41          42 
+-0.25873153 -0.06463880 -0.60031864  0.35309450 -0.40413177 -0.23605789 
+         43          44          45          46          47          48 
+-0.27807061  1.19182981  0.51576521 -0.30798578 -0.23243093 -0.79761840 
+         49          50          51          52          53          54 
+-0.50689975 -0.36818204  0.31411848  8.26330267 -0.09361694  0.09055082 
+         55          56          57          58          59          60 
+ 0.79294347  1.46118498  0.25201248  0.08589394  0.42013015 -0.39684872 
+         61          62          63          64          65          66 
+-0.22360512  0.41685062  0.15731485 -0.14739813 -1.10993880 -0.20178038 
+         67          68          69          70          71          72 
+ 0.79292276 -0.18767512  0.20436854 -0.62890771 -0.27670810 -0.24713471 
+         73          74          75          76          77          78 
+-0.01679951 -0.26323942  0.17818861 -0.68397901  1.26522875 -0.35046551 
+         79          80          81          82          83          84 
+-0.44524268 -0.62982446 -0.55069327  0.15747130 -0.89111033 -0.85292407 
+         85          86          87          88          89          90 
+-0.45314812 -0.77661047 -0.18908497 -0.30889052 -0.10833297 -1.32198116 
+         91          92          93          94          95          96 
+-0.48501717  0.49628576 -0.67578460 -0.23870558 -1.14367245  0.03002462 
+         97          98          99         100         101         102 
+-0.57705573 -0.05159823  5.46169929 -0.20922182  1.23368127  0.18303953 
+        103         104         105         106         107         108 
+ 0.07030141  0.25785275 -0.77893916 -0.19063742  0.12183037  0.34845777 
+        109         110         111         112         113         114 
+-0.30585889 -0.24738095  0.41934670 -0.07041467 -0.37829315  0.04594403 
+        115         116         117         118         119         120 
+ 0.32602557 -0.38027841 -0.32716525  0.71289982  0.27940186  0.48140195 
+        121         122         123         124         125         126 
+-2.18184912 -0.62465748 -0.47712834 -0.10754776 -1.04089080 -0.45200365 
+        127         128         129         130         131         132 
+ 0.25020843 -0.52212740  1.52063376  0.13954628 -0.17092842  0.36037744 
+        133         134         135         136         137         138 
+-0.92165680 -0.34705520 -0.70046950 -0.33790337 -0.37340477 -0.47136631 
+        139         140         141         142         143         144 
+ 1.10484231 -0.25180468 -1.32759658 -0.69094635 -0.30640976  1.55250760 
+        145         146         147         148         149         150 
+-0.23101715 -0.12100120 -0.98007671 -0.05936928 -1.51645268  0.03895769 
+        151         152         153         154         155         156 
+ 0.72346749 -0.22693522  0.10248134 -0.65009300  0.26260101 -0.33689321 
+        157         158         159         160         161         162 
+-0.26987613 -0.16402204 -0.13786854 -0.39785779 -0.52458870 -0.24681292 
+        163         164         165         166         167         168 
+-0.49362159  1.31561683 -0.02591522 -0.69666680 -0.04439707  0.89831937 
+        169         170         171         172         173         174 
+ 1.40500625 -0.85651196  0.53060808  0.43136278 -0.34431645 -1.07451167 
+        175         176         177         178         179         180 
+ 0.28217827  0.76381193 -0.28397999 -1.88559891  1.48467490  4.34251558 
+        181         182         183         184         185         186 
+-0.23399247 -0.32039808  0.31100363 -0.34491041  3.24973502 -0.70775350 
+        187         188         189         190         191         192 
+-0.36289240  0.15454477  3.53812279 -0.35684594 -0.87422666 -0.13963741 
+        193         194         195         196         197         198 
+-0.33162142  0.03320685  0.84943600  0.52533286 -0.47083195 -0.38717949 
+        199 
+ 0.35120948 </code></pre>
+</div>
+</div>
+<p>Berdasarkan nilai studentized residual (rstudent), sebagian besar observasi berada pada rentang sekitar -2 hingga 2, sehingga tidak menunjukkan adanya outlier yang serius. Namun, terdapat beberapa nilai yang berada di luar batas tersebut, seperti nilai yang lebih besar dari 3 atau kurang dari -3, yang mengindikasikan adanya outlier potensial dalam data.</p>
+</section>
+<section id="leverage" class="level3">
+<h3 class="anchored" data-anchor-id="leverage">Leverage</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hatvalues</span>(model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          1           2           3           4           5           6 
+0.060870462 0.093430965 0.021312778 0.034876176 0.008722458 0.024124279 
+          7           8           9          10          11          12 
+0.010414833 0.008799493 0.274341876 0.014648343 0.033185552 0.020265087 
+         13          14          15          16          17          18 
+0.012555782 0.013542914 0.023247022 0.010407544 0.029991568 0.017583977 
+         19          20          21          22          23          24 
+0.044766589 0.006146761 0.026328531 0.007120080 0.029190598 0.009410315 
+         25          26          27          28          29          30 
+0.011639351 0.010036000 0.031470844 0.013828401 0.102458537 0.013522929 
+         31          32          33          34          35          36 
+0.012249940 0.009357328 0.019019684 0.042899232 0.017443199 0.032048750 
+         37          38          39          40          41          42 
+0.032004186 0.016192083 0.015321642 0.039023323 0.017111033 0.013496023 
+         43          44          45          46          47          48 
+0.018806005 0.034507018 0.058882036 0.021380464 0.037163193 0.076786120 
+         49          50          51          52          53          54 
+0.017592925 0.008178302 0.029288219 0.071448810 0.024403708 0.019951740 
+         55          56          57          58          59          60 
+0.026666604 0.027604488 0.011308902 0.042762808 0.010911791 0.017631293 
+         61          62          63          64          65          66 
+0.021251559 0.011936986 0.013747689 0.007488295 0.044329337 0.011619668 
+         67          68          69          70          71          72 
+0.018931269 0.019577813 0.013214452 0.011988106 0.015902877 0.014042775 
+         73          74          75          76          77          78 
+0.022692996 0.100901157 0.017627961 0.011504502 0.154888849 0.036516603 
+         79          80          81          82          83          84 
+0.008202163 0.080829882 0.016259956 0.012732041 0.012653134 0.021507263 
+         85          86          87          88          89          90 
+0.012152143 0.013992362 0.011381801 0.024664793 0.012375928 0.019759680 
+         91          92          93          94          95          96 
+0.017675426 0.015624936 0.046980970 0.018539035 0.013554714 0.015957745 
+         97          98          99         100         101         102 
+0.021843482 0.013919669 0.014307240 0.015570952 0.011437178 0.012273218 
+        103         104         105         106         107         108 
+0.013065041 0.021354551 0.024544566 0.009225637 0.019955134 0.030695966 
+        109         110         111         112         113         114 
+0.014269544 0.020682390 0.016852422 0.017435927 0.016794472 0.028104299 
+        115         116         117         118         119         120 
+0.039785010 0.025680714 0.021062682 0.030306051 0.011598461 0.013862594 
+        121         122         123         124         125         126 
+0.051311565 0.013132493 0.010258582 0.016568487 0.038017027 0.009008741 
+        127         128         129         130         131         132 
+0.015723640 0.015072214 0.176028655 0.011920496 0.011851669 0.014971624 
+        133         134         135         136         137         138 
+0.064121793 0.039299550 0.008122929 0.009660840 0.058092221 0.009992701 
+        139         140         141         142         143         144 
+0.011563095 0.023031748 0.094321755 0.010817203 0.013681138 0.080027526 
+        145         146         147         148         149         150 
+0.020951329 0.009323858 0.025980083 0.013200078 0.027233720 0.048012844 
+        151         152         153         154         155         156 
+0.046980046 0.036043647 0.014897845 0.008421392 0.012437330 0.013919538 
+        157         158         159         160         161         162 
+0.022621345 0.009128417 0.014797984 0.010735082 0.010893344 0.043021379 
+        163         164         165         166         167         168 
+0.023320510 0.019068524 0.016754759 0.037719728 0.014983888 0.023082367 
+        169         170         171         172         173         174 
+0.008598454 0.020319825 0.099762520 0.009480375 0.019456069 0.017204963 
+        175         176         177         178         179         180 
+0.013680329 0.007860836 0.045453094 0.488665579 0.027674060 0.128535068 
+        181         182         183         184         185         186 
+0.097725838 0.014721503 0.033560709 0.016412729 0.098390831 0.015715214 
+        187         188         189         190         191         192 
+0.015893781 0.020937303 0.085925411 0.014646242 0.009974192 0.017288813 
+        193         194         195         196         197         198 
+0.014627424 0.012173152 0.011140098 0.025217119 0.006105809 0.015931745 
+        199 
+0.029479223 </code></pre>
+</div>
+</div>
+<p>Berdasarkan nilai leverage (hatvalues), sebagian besar observasi memiliki nilai yang relatif kecil dan berada jauh di bawah batas umum, sehingga tidak menunjukkan adanya masalah leverage yang serius. Namun, terdapat beberapa observasi dengan nilai yang cukup tinggi, seperti yang mendekati atau di atas batas 2(k+1)/n , yang mengindikasikan adanya titik dengan leverage tinggi.</p>
+</section>
+<section id="amatan-berpengaruh-cook-distance" class="level3">
+<h3 class="anchored" data-anchor-id="amatan-berpengaruh-cook-distance">Amatan Berpengaruh ( Cook Distance )</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>cooks_dist<span class="ot">&lt;-</span><span class="fu">cooks.distance</span>(model)</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">cooks.distance</span>(model), <span class="at">type=</span><span class="st">"h"</span>, <span class="at">main=</span><span class="st">"Cook's Distance"</span>)</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">4</span><span class="sc">/</span><span class="fu">length</span>(<span class="fu">cooks.distance</span>(model)), <span class="at">col=</span><span class="st">"red"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Tugas2_RaymondEdbert_M0401241067_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(<span class="fu">sort</span>(cooks_dist), <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      189         9       180       178        52 
+0.1850801 0.1902260 0.4242986 0.5589094 0.6493190 </code></pre>
+</div>
+</div>
+<p>Berdasarkan plot Cook’s Distance, terlihat bahwa sebagian besar observasi memiliki nilai yang sangat kecil dan berada di bawah garis batas, sehingga tidak memberikan pengaruh besar terhadap model. Namun, terdapat beberapa titik dengan nilai Cook’s Distance yang cukup tinggi (melewati garis batas), yang mengindikasikan adanya observasi berpengaruh (influential points).</p>
+<p>Observasi dengan nilai terbesar (misalnya sekitar indeks 52, 178, 180, dan 189) berpotensi memberikan dampak signifikan terhadap estimasi model. Secara keseluruhan, meskipun sebagian besar data tidak bermasalah, beberapa titik tersebut perlu diperhatikan lebih lanjut karena dapat mempengaruhi hasil regresi.</p>
+</section>
+</section>
+</section>
+<section id="interpretasi-hasil-diagnostik" class="level1">
+<h1>6. Interpretasi Hasil Diagnostik</h1>
+<section id="analisis-pelanggaran-asumsi" class="level2">
+<h2 class="anchored" data-anchor-id="analisis-pelanggaran-asumsi">Analisis Pelanggaran Asumsi</h2>
+<p>Berdasarkan hasil pengujian diagnostik, model regresi yang digunakan masih mengalami beberapa pelanggaran asumsi klasik. Pada uji normalitas, residual tidak berdistribusi normal (p-value &lt; 0,05), sehingga asumsi normalitas tidak terpenuhi. Selain itu, hasil uji Breusch-Pagan menunjukkan adanya heteroskedastisitas, yang berarti varians residual tidak konstan.</p>
+<p>Di sisi lain, hasil uji Durbin-Watson menunjukkan bahwa tidak terdapat autokorelasi pada model, sehingga asumsi independensi residual sudah terpenuhi. Untuk multikolinearitas, sebagian besar variabel masih dalam batas aman, namun terdapat indikasi multikolinearitas yang cukup tinggi pada variabel kalori (VIF &gt; 10), sehingga perlu diperhatikan.</p>
+<p>Selain itu, dari hasil uji outlier dan pengamatan Cook’s Distance, ditemukan beberapa observasi yang berpotensi berpengaruh terhadap model, meskipun sebagian besar data masih berada dalam batas wajar.</p>
+</section>
+<section id="metode-penanganan-permasalahan" class="level2">
+<h2 class="anchored" data-anchor-id="metode-penanganan-permasalahan">Metode Penanganan Permasalahan</h2>
+<p>Untuk mengatasi permasalahan yang ada, terdapat beberapa pendekatan yang dapat dilakukan. Transformasi variabel, seperti menggunakan logaritma pada variabel pengeluaran, dapat membantu memperbaiki normalitas dan mengurangi heteroskedastisitas.</p>
+<p>Selain itu, untuk mengatasi heteroskedastisitas dapat digunakan metode Weighted Least Squares (WLS), sedangkan jika ingin tetap mempertahankan data yang mengandung outlier, dapat digunakan pendekatan Robust Regression yang lebih tahan terhadap data ekstrem.</p>
+<p>Jika multikolinearitas menjadi masalah yang cukup mengganggu, salah satu solusi yang dapat dilakukan adalah mengurangi atau menggabungkan variabel yang saling berkorelasi tinggi, khususnya pada variabel gizi. Terakhir, observasi yang memiliki pengaruh besar berdasarkan Cook’s Distance dapat ditinjau lebih lanjut untuk menentukan apakah perlu dipertahankan atau dihapus dari analisis.</p>
+</section>
+</section>
+<section id="kesimpulan" class="level1">
+<h1>7. Kesimpulan</h1>
+<p>Berdasarkan hasil analisis regresi yang telah dilakukan, model sudah mampu menjelaskan hubungan antara pengeluaran total dengan variabel-variabel yang digunakan, di mana secara simultan variabel independen menunjukkan hubungan yang signifikan terhadap pengeluaran total. Variabel pengeluaran makanan dan protein terlihat memiliki hubungan yang signifikan, sedangkan variabel lain seperti kalori dan lemak tidak signifikan, dan karbohidrat memiliki pengaruh yang relatif lemah.</p>
+<p>Secara umum, arah hubungan menunjukkan bahwa peningkatan pengeluaran makanan dan konsumsi protein cenderung diikuti dengan peningkatan pengeluaran total. Sementara itu, variabel lemak dan karbohidrat menunjukkan arah negatif, yang kemungkinan dipengaruhi oleh adanya keterkaitan antar variabel gizi (multikolinearitas), sehingga interpretasinya perlu dilakukan dengan hati-hati.</p>
+<p>Namun, berdasarkan hasil diagnostik model, ditemukan beberapa pelanggaran asumsi klasik. Residual tidak berdistribusi normal dan terdapat heteroskedastisitas, meskipun tidak ditemukan adanya autokorelasi. Selain itu, terdapat indikasi multikolinearitas pada variabel tertentu serta beberapa observasi yang berpotensi berpengaruh terhadap model.</p>
+<p>Secara keseluruhan, meskipun model dapat menggambarkan pola hubungan antara pengeluaran dan konsumsi rumah tangga, hasil yang diperoleh lebih tepat diinterpretasikan sebagai hubungan (asosiasi) dan bukan hubungan sebab-akibat, serta perlu dilihat dengan hati-hati karena adanya pelanggaran asumsi yang dapat mempengaruhi keandalan model.</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
